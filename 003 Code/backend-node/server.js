@@ -20,7 +20,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 const redis = require('redis');
-const redisClient = redis.createClient({ url: "redis://:manager0@svc.sel4.cloudtype.app:30583/0" }); // 기본 포트: 6379
+const redisClient = redis.createClient({ url: "" }); // 기본 포트: 6379
 // Swagger UI 경로 설정
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -32,7 +32,7 @@ redisClient.connect()
   .catch(err => console.error('Redis connection failed:', err));
 
 // Mongo 연결
-const client = new MongoClient('mongodb+srv://admin:5003@fmds.ydvxk.mongodb.net/?retryWrites=true&w=majority&appName=FMDS');
+const client = new MongoClient('');
 let typeCol, instCol, dataDB;
 const watchingModelTypes = new Set(); // 현재 감시 중인 모델타입을 기억하는 set
 client.connect().then(async () => {
